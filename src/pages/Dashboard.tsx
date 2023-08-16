@@ -5,12 +5,12 @@ import SearchSection from '../components/SearchSection';
 import { useDataContext } from '../context/DataContext';
 import { Box, Container, Flex, SimpleGrid, VStack } from '@chakra-ui/react';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
     const { getPortfolioItemsFromCookies, removeFromPortfolio } = useDataContext();
-    const [portfolioItems, setPortfolioItems] = useState([]);
+    const [portfolioItems, setPortfolioItems] = useState<{ symbol: string; name: string }[]>([]);
 
-    const handleAddToPortfolio =async () => {
-        const previousItems =await getPortfolioItemsFromCookies();
+    const handleAddToPortfolio = async () => {
+        const previousItems = await getPortfolioItemsFromCookies();
         setPortfolioItems(previousItems);
     };
 
@@ -18,7 +18,7 @@ const Dashboard = () => {
         handleAddToPortfolio();
     }, []);
 
-    const handleRemoveFromPortfolio = (symbol) => {
+    const handleRemoveFromPortfolio = (symbol: string) => {
         const updatedPortfolio = removeFromPortfolio(symbol);
         setPortfolioItems(updatedPortfolio);
     };
@@ -27,10 +27,8 @@ const Dashboard = () => {
         <Box p={4}>
             <Container maxW="container.xl">
                 <Flex direction="column" align="center">
-                    
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="100%">
                         <VStack spacing={4} align="stretch">
-                           
                             <SearchSection addToPortfolio={handleAddToPortfolio} />
                         </VStack>
                         <VStack spacing={4} align="stretch">

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import Header from './Header';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <Box minHeight="100vh" >
+        <Box minHeight="100vh">
             <Header />
 
             <Flex direction="column" alignItems="center" justifyContent="flex-start" p={4}>

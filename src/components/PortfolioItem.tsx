@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Tr, Td, IconButton, Tooltip } from '@chakra-ui/react';
-import { AiOutlineCloseCircle } from 'react-icons/ai'; // Remove icon
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import styled from 'styled-components';
+import { PortfolioItemProps } from '../interfaces/PortfolioItemProps'
+
 
 const StyledTr = styled(Tr)`
     &:hover {
@@ -25,7 +27,7 @@ const StyledIconButton = styled(IconButton)`
     }
 `;
 
-const PortfolioItem = ({ symbol, name, onRemove }) => {
+const PortfolioItem: React.FC<PortfolioItemProps> = ({ symbol, name, onRemove }) => {
     return (
         <StyledTr>
             <StyledTd>

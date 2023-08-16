@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useDataContext } from '../context/DataContext';
 import {
     Input,
-    List,
     ListItem,
     Button,
     Collapse,
@@ -10,52 +9,30 @@ import {
     Text,
     Tooltip,
     InputGroup,
-    InputLeftElement, // Import InputLeftElement
+    InputLeftElement,
 } from '@chakra-ui/react';
 import { FaSearch, FaPlusCircle } from 'react-icons/fa';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import styled from 'styled-components';
+import { SearchContainer, StyledList } from '../style/SearchSection.styles'
+import { SearchSectionProps } from '../interfaces/SearchSectionProps'
 
-const SearchContainer = styled.div`
-    margin-top: 2rem;
-`;
 
-const StyledList = styled(List)`
-    max-height: 300px;
-    overflow-y: auto;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #333333 #111111; /* Firefox */
 
-    &::-webkit-scrollbar {
-        width: 8px;
-        border-radius: 5px;
-    }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: #999999; /* Adjust the color here */
-        border-radius: 5px;
-        border: 2px solid #111111;
-    }
 
-    &::-webkit-scrollbar-track {
-        background-color: #111111;
-        border-radius: 5px;
-    }
-`;
-
-const SearchSection = ({ addToPortfolio }) => {
+const SearchSection: React.FC<SearchSectionProps> = ({ addToPortfolio }) => {
     const [searchInput, setSearchInput] = useState('');
     const [showList, setShowList] = useState(false);
     const { searchResults, fetchSearchResults, setPortfolioItemsToCookies } = useDataContext();
 
-    const handleSearchChange = async (event) => {
+    const handleSearchChange = async (event: ChangeEvent<HTMLInputElement>) => {
         const input = event.target.value;
         setSearchInput(input);
         fetchSearchResults(input);
         setShowList(true);
     };
 
-    const handleClick = (symbol, name) => {
+    const handleClick = (symbol: string, name: string) => {
         setPortfolioItemsToCookies(symbol, name);
         addToPortfolio(symbol, name);
         setSearchInput('');
