@@ -29,18 +29,24 @@ Stock Portfolio Tracker is a web application that allows users to track and mana
    git clone https://github.com/alitanharo/stock-portfolio-tracker
    
 2. Navigate to the project directory:
-   cd stock-portfolio-tracker
+
+  cd stock-portfolio-tracker
 
 3. Install dependencies:
 
   npm install
 
-4. Create a .env file in the root directory and add your Alpha Vantage API key:
+4. Create a .env file in the root directory and add your Alpha Vantage API key https://www.alphavantage.co/:
+
+
   REACT_APP_API_KEY=your-api-key
 
 5. Start the development server:
+
+
    npm start
-  Open your browser and go to http://localhost:3000 to view the app.
+
+   Open your browser and go to http://localhost:3000 to view the app.
 
 # Usage
 Search for a company using the search bar.
@@ -50,12 +56,12 @@ Click on a company name in the portfolio to view detailed information.
 Toggle between dark and light color modes using the color mode switch.
 
 # Technologies Used
-React
-Chakra UI
-React Router
-Axios
-TypeScript
-Stiled component
+React, 
+Chakra UI,
+React Router,
+Axios,
+TypeScript,
+Stiled component,
 React Icons
 
 
